@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { backendAPI } from "../services/api";
 
 function SignUpPage() {
   const [username, setUsername] = useState("");
@@ -12,32 +12,32 @@ function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
+
     try {
       console.log("Sending signup request with data:", { username, email, password });
-  
-      await axios.post(
-        "/api/register",
-        { username, email, password },
-        { withCredentials: true }
-      );
       
-     
+      // Use backendAPI so that withCredentials and baseURL are applied
+      await backendAPI.post("/api/register", { username, email, password });
+
       console.log("Attempting auto login after signup...");
-      const loginResponse = await axios.post(
+      
+      const loginResponse = await backendAPI.post(
         "/api/login",
         { email, password },
-        { withCredentials: true }
+        { withCredentials: true }  // Explicitly include credentials, if needed
       );
+      
       console.log("Auto login successful, user data:", loginResponse.data);
       
-      // Redirect to homepage
+      // Redirect to homepage after successful login
       navigate("/");
     } catch (err) {
-      console.error("Error during signup:", err);
+      console.error("Error during signup:", err.response?.data?.message || err.message);
       setErrorMessage(err.response?.data?.message || "Error signing up");
     }
   };
