@@ -162,27 +162,19 @@ useEffect(() => {
 
   // Handle AI chat submission using fetch.
   const handleChatSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("http://localhost:5005/api/pokemonAI", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: [{ role: "user", content: chatInput }],
-        }),
-      });
-      if (!res.ok) {
-        throw new Error("Network response was not ok " + res.status);
-      }
-      const data = await res.json();
-      setChatResponse(data.message.content);
-    } catch (error) {
-      console.error("Error fetching AI response:", error);
-      setChatResponse("Error: Unable to get response");
-    }
-  };
+  e.preventDefault();
+  try {
+    const res = await backendAPI.post("/api/pokemonAI", {
+      messages: [{ role: "user", content: chatInput }],
+    });
+    // Assuming your ChatController returns an object with a "message" property:
+    setChatResponse(res.data.message.content);
+  } catch (error) {
+    console.error("Error fetching AI response:", error.response?.data?.message || error.message);
+    setChatResponse("Error: Unable to get response");
+  }
+};
+
 
   // Loading state
   if (loadingUser || !currentPokemon) {
