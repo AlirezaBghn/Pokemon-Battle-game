@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    console.log("í´— Connecting to MongoDB...");
+    console.log("ï¿½ï¿½ï¿½ Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -15,4 +15,3 @@ const connectDB = async () => {
 };
 
 export default connectDB;
-
