@@ -17,24 +17,28 @@ function SignUpPage() {
       return;
     }
     try {
-      console.log("Sending signup request with data:", {
-        username,
-        email,
-        password,
-      });
+      console.log("Sending signup request with data:", { username, email, password });
+  
       await axios.post(
         "/api/register",
-        {
-          username,
-          email,
-          password,
-        },
+        { username, email, password },
         { withCredentials: true }
       );
-      navigate("/signin");
+      
+     
+      console.log("Attempting auto login after signup...");
+      const loginResponse = await axios.post(
+        "/api/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      console.log("Auto login successful, user data:", loginResponse.data);
+      
+      // Redirect to homepage
+      navigate("/");
     } catch (err) {
       console.error("Error during signup:", err);
-      setErrorMessage(err.response.data.message || "Error signing up");
+      setErrorMessage(err.response?.data?.message || "Error signing up");
     }
   };
 
@@ -88,10 +92,7 @@ function SignUpPage() {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-300 mb-2"
-              htmlFor="confirmPassword"
-            >
+            <label className="block text-gray-300 mb-2" htmlFor="confirmPassword">
               Confirm Password
             </label>
             <input
