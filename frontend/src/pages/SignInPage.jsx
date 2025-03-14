@@ -25,18 +25,26 @@ function SignInPage() {
   }, [setIsAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log("Attempting sign in with:", { email, password });
-      const response = await backendAPI.post("/api/login", { email, password });
-      console.log("Sign in response:", response.data);
+  e.preventDefault();
+  try {
+    console.log("Attempting sign in with:", { email, password });
+    const response = await backendAPI.post("/api/login", { email, password });
+
+    console.log("Sign in response:", response.data);
+
+    if (response.data) {
+      console.log("✅ User authenticated, updating state...");
       setIsAuthenticated(true);
-      navigate("/");
-    } catch (err) {
-      console.error("Error signing in:", err);
-      alert(err.response?.data?.message || "Error signing in");
+      navigate("/"); // Redirect to home page
+    } else {
+      console.log("❌ No authentication data received.");
     }
-  };
+  } catch (err) {
+    console.error("Error signing in:", err);
+    alert(err.response?.data?.message || "Error signing in");
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
