@@ -6,7 +6,6 @@ const protect = asyncHandler(async (req, res, next) => {
   console.log("🔍 Checking authentication...");
 
   let token = req.cookies.token;
-  
   if (!token) {
     console.log("❌ No token found in cookies.");
     return res.status(401).json({ message: "Unauthorized - No token" });
@@ -23,13 +22,4 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-
 export { protect };
-// check session
-// export const checksession = (req, res) => {
-//   if (req.user) {
-//     res.json({ authenticated: true, user: req.user });
-//   } else {
-//     res.json({ authenticated: false });
-//   }
-// };
