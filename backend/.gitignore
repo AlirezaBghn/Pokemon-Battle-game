@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+npm-debug.log
+env
+# Logs
+logs/
+*.log
+*.log.*
+
+jspm_packages/
+bower_components/
+
+.npm
+
+.eslintcache
+
+.node_repl_history
+
+.DS_Store
+
+Thumbs.db
+ehthumbs.db
+
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
