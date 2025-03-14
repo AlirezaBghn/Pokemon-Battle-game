@@ -21,12 +21,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     const token = generateToken(user._id);
-
+    // Set cookie without an explicit domain.
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true,        
-      sameSite: "None",      
-      domain: ".onrender.com", 
+      secure: true,           // Ensures cookies work on HTTPS (Render)
+      sameSite: "None",       // Allows cross-site cookie usage
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.status(201).json({
@@ -46,12 +45,11 @@ const authUser = asyncHandler(async (req, res) => {
 
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = generateToken(user._id);
-    // Set cookie with secure options and domain
+    // Set cookie without an explicit domain.
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
-      domain: ".onrender.com",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
@@ -87,11 +85,11 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 const logoutUser = (req, res) => {
+  // Clear cookie by expiring it immediately.
   res.cookie("token", "", {
     httpOnly: true,
     secure: true,
     sameSite: "None",
-    domain: ".onrender.com",
     expires: new Date(0),
   });
   res.status(200).json({ message: "Logout successful" });
