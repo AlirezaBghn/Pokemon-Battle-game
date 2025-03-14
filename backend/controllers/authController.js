@@ -5,11 +5,9 @@ import bcrypt from "bcryptjs";
 
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
-
   console.log("Registering user:", { username, email });
 
   const userExists = await User.findOne({ email });
-
   if (userExists) {
     res.status(400);
     throw new Error("Email already exists");
@@ -23,9 +21,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     const token = generateToken(user._id);
+    // Set cookie with secure options for HTTPS (Render)
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,           // Force secure cookies on HTTPS
+      sameSite: "None",       // Allow cross-site cookie usage
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.status(201).json({
@@ -43,12 +43,13 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
-
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = generateToken(user._id);
+    // Set cookie with secure options for HTTPS (Render)
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
+      sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
@@ -64,14 +65,12 @@ const authUser = asyncHandler(async (req, res) => {
 
 const getUserProfile = asyncHandler(async (req, res) => {
   console.log("🔍 Checking user profile...");
-  
   if (!req.user) {
     console.log("❌ No authenticated user found.");
     return res.status(401).json({ message: "Unauthorized - No user session" });
   }
 
   const user = await User.findById(req.user._id);
-  
   if (user) {
     console.log("✅ User found:", user.username);
     res.json({
@@ -85,9 +84,14 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-
 const logoutUser = (req, res) => {
-  res.clearCookie("token");
+  // Clear cookie by setting it to an empty value and expiring it immediately
+  res.cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    expires: new Date(0),
+  });
   res.status(200).json({ message: "Logout successful" });
 };
 
