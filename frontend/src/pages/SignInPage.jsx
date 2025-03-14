@@ -9,42 +9,42 @@ function SignInPage() {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useAuth();
 
+  // Verify session on mount
   useEffect(() => {
     const verifySession = async () => {
       try {
-        const response = await backendAPI.get("/api/check-session");
+        console.log("Verifying session...");
+        const response = await backendAPI.get("/api/check-session", { withCredentials: true });
         if (response.data.authenticated) {
+          console.log("Session verified. User is authenticated.");
           setIsAuthenticated(true);
           navigate("/");
         }
       } catch (error) {
-        console.error("Error verifying session", error);
+        console.error("Error verifying session", error.response?.data || error.message);
       }
     };
     verifySession();
   }, [setIsAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    console.log("Attempting sign in with:", { email, password });
-    const response = await backendAPI.post("/api/login", { email, password });
-
-    console.log("Sign in response:", response.data);
-
-    if (response.data) {
-      console.log("✅ User authenticated, updating state...");
-      setIsAuthenticated(true);
-      navigate("/"); // Redirect to home page
-    } else {
-      console.log("❌ No authentication data received.");
+    e.preventDefault();
+    try {
+      console.log("Attempting sign in with:", { email, password });
+      const response = await backendAPI.post("/api/login", { email, password }, { withCredentials: true });
+      console.log("Sign in response:", response.data);
+      if (response.data) {
+        console.log("✅ User authenticated, updating state...");
+        setIsAuthenticated(true);
+        navigate("/");
+      } else {
+        console.log("❌ No authentication data received.");
+      }
+    } catch (err) {
+      console.error("Error signing in:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Error signing in");
     }
-  } catch (err) {
-    console.error("Error signing in:", err);
-    alert(err.response?.data?.message || "Error signing in");
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
