@@ -1,15 +1,13 @@
 import axios from "axios";
 
 export const backendAPI = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5005", // Uses .env variable in production, defaults to localhost in development
+  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5005", // Uses .env variable in production
   withCredentials: true,
 });
 
-export const backendAPI = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5005",
-  withCredentials: true,
+export const pokeAPI = axios.create({
+  baseURL: "https://pokeapi.co/api/v2",
 });
-
 
 export const fetchCards = async () => {
   try {
