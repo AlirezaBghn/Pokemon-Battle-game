@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 export const backendAPI = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5005", // Uses .env variable in production
+  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5005",
   withCredentials: true,
 });
 
