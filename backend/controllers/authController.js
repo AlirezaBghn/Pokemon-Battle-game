@@ -63,19 +63,28 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  console.log("🔍 Checking user profile...");
+  
+  if (!req.user) {
+    console.log("❌ No authenticated user found.");
+    return res.status(401).json({ message: "Unauthorized - No user session" });
+  }
 
+  const user = await User.findById(req.user._id);
+  
   if (user) {
+    console.log("✅ User found:", user.username);
     res.json({
       _id: user._id,
       username: user.username,
       email: user.email,
     });
   } else {
-    res.status(404);
-    throw new Error("User not found");
+    console.log("❌ User not found in database.");
+    res.status(404).json({ message: "User not found" });
   }
 });
+
 
 const logoutUser = (req, res) => {
   res.clearCookie("token");
