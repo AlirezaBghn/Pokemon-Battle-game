@@ -1,42 +1,87 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Retro background and font (include in your index.html or via Tailwind custom config) */
+body {
+  font-family: "Press Start 2P", cursive, monospace;
+  background: radial-gradient(circle at center, #111, #000);
+  color: #fff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Flip Card Container */
+.flip-card {
+  background-color: transparent;
+  width: 96px; /* Adjust width as needed */
+  height: 144px; /* Approximate playing card ratio */
+  perspective: 1000px;
+  margin: 0.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* The inner container that is animated */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* When flipped, rotate 180 degrees */
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
 }
 
-.card {
-  padding: 2em;
+/* Both faces (front and back) */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.read-the-docs {
-  color: #888;
+/* Backside of the card (what you see before flipping) – use a retro pattern or color */
+.flip-card-front {
+  background: repeating-linear-gradient(
+    45deg,
+    #444,
+    #444 4px,
+    #222 4px,
+    #222 8px
+  );
+  color: #fff;
+  font-size: 2rem;
+}
+
+/* Frontside of the card (revealed details) */
+.flip-card-back {
+  background: linear-gradient(145deg, #f8f8f8, #ddd);
+  color: #333;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+
+/* Glowing borders for round results */
+.flip-card.win {
+  border: 4px solid #fcd34d; /* golden glow for winner */
+  box-shadow: 0 0 10px 2px #fcd34d;
+}
+
+.flip-card.lose {
+  border: 4px solid #60a5fa; /* cool blue glow for loser */
+  box-shadow: 0 0 10px 2px #60a5fa;
+}
+
+.flip-card.tie {
+  border: 4px solid #a78bfa; /* purple-ish for ties */
+  box-shadow: 0 0 10px 2px #a78bfa;
+}
+
+.flip-card.selected {
+  border: 4px solid #3b82f6; /* a bright blue when selected */
+  box-shadow: 0 0 10px 2px #3b82f6;
 }
