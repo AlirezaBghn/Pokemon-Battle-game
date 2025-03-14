@@ -21,11 +21,12 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     const token = generateToken(user._id);
-    // Set cookie with secure options for HTTPS (Render)
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true,           // Force secure cookies on HTTPS
-      sameSite: "None",       // Allow cross-site cookie usage
+      secure: true,        
+      sameSite: "None",      
+      domain: ".onrender.com", 
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.status(201).json({
@@ -41,15 +42,16 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
+
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = generateToken(user._id);
-    // Set cookie with secure options for HTTPS (Render)
+    // Set cookie with secure options and domain
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
+      domain: ".onrender.com",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
@@ -85,11 +87,11 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 const logoutUser = (req, res) => {
-  // Clear cookie by setting it to an empty value and expiring it immediately
   res.cookie("token", "", {
     httpOnly: true,
     secure: true,
     sameSite: "None",
+    domain: ".onrender.com",
     expires: new Date(0),
   });
   res.status(200).json({ message: "Logout successful" });
