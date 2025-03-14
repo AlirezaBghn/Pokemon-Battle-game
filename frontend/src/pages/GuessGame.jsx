@@ -21,20 +21,29 @@ function GuessGame() {
   const [chatInput, setChatInput] = useState("");
   const [chatResponse, setChatResponse] = useState("");
 
-  // Fetch the logged‑in user from the backend
+
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await backendAPI.get("/api/user");
-        setUsername(res.data.username);
-      } catch (error) {
-        console.error("Error fetching user", error);
-      } finally {
-        setLoadingUser(false);
-      }
-    };
-    getUser();
-  }, []);
+  const getUser = async () => {
+    try {
+      console.log("🔍 Fetching user...");
+      const res = await backendAPI.get("/api/user", { withCredentials: true });
+
+      console.log("✅ User data:", res.data);
+      setUsername(res.data.username);
+    } catch (error) {
+      console.error(
+        "❌ Error fetching user:",
+        error.response?.data?.message || error.message
+      );
+      setUsername(""); // Ensure username is reset on error
+    } finally {
+      setLoadingUser(false);
+    }
+  };
+
+  getUser();
+}, []);
+
 
   // Once the username is set, fetch best score and a random Pokémon.
   useEffect(() => {
