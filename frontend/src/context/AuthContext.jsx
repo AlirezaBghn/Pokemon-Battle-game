@@ -18,7 +18,10 @@ export const AuthProvider = ({ children }) => {
         console.log("✅ Session check response:", res.data);
         setIsAuthenticated(res.data.authenticated);
       } catch (error) {
-        console.error("❌ Session check failed:", error.response?.data || error.message);
+        console.error(
+          "❌ Session check failed:",
+          error.response?.data || error.message
+        );
         setIsAuthenticated(false);
       } finally {
         setLoading(false);

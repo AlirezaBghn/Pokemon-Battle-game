@@ -9,6 +9,7 @@ import Leaderboard from "./pages/Leaderboard.jsx";
 import BattleGamePage from "./pages/BattleGamePage.jsx";
 import BattleGameLeaderboardPage from "./pages/BattleGameLeaderboardPage.jsx";
 import AuthenticatedLayout from "./layouts/AuthenticatedLayout.jsx";
+import "./i18n"; // Import i18n configuration
 
 function App() {
   return (
@@ -22,11 +23,11 @@ function App() {
           <Route path="/game-selection" element={<GameSelectionPage />} />
           <Route path="/guessing-game" element={<GuessGame />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/battle-game" element={<BattleGamePage />} />{" "}
+          <Route path="/battle-game" element={<BattleGamePage />} />
           <Route
             path="/battle-game-leaderboard"
             element={<BattleGameLeaderboardPage />}
-          />{" "}
+          />
         </Route>
       </Routes>
     </AuthProvider>
