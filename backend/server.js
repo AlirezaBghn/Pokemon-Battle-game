@@ -9,6 +9,7 @@ import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import cardsRoutes from "./routes/cardsRoutes.js";
 import gameResultsRoutes from "./routes/gameResultsRoutes.js";
 import chatRouter from "./routes/chatRouter.js";
+import path from "path";
 
 dotenv.config();
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/uploads", express.static("uploads"));
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
 app.use("/api", authRoutes);
 app.use("/api/leaderboard", leaderboardRoutes);
@@ -37,6 +39,10 @@ app.use("/api/pokemonAI", chatRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello from the Pokémon Battle Game backend!");
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 });
 
 app.use(notFound);
