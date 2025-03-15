@@ -10,6 +10,7 @@ import cardsRoutes from "./routes/cardsRoutes.js";
 import gameResultsRoutes from "./routes/gameResultsRoutes.js";
 import chatRouter from "./routes/chatRouter.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/uploads", express.static("uploads"));
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
 app.use("/api", authRoutes);
