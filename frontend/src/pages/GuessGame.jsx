@@ -133,8 +133,6 @@ function GuessGame() {
     if (guess.trim().toLowerCase() === currentPokemon.name.toLowerCase()) {
       newScore += 10;
       setMessage("Correct! +10 points");
-      newWrongAttempts = 0;
-      setWrongAttempts(0);
     } else {
       newScore -= 10;
       newWrongAttempts += 1;
