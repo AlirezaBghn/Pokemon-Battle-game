@@ -13,9 +13,16 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
 
-  // Function to handle back navigation
+  // Modified function to handle back navigation
   const goBack = () => {
-    navigate(-1);
+    // Special handling for home route to prevent going back to non-authenticated routes
+    if (location.pathname === "/home") {
+      // Navigate to game selection instead of going back
+      navigate("/game-selection");
+    } else {
+      // Standard back navigation for other routes
+      navigate(-1);
+    }
   };
 
   // Determine if the back button should be shown
@@ -80,7 +87,7 @@ const NavBar = () => {
               </svg>
             </button>
           )}
-          <Link to="/" className={buttonClass}>
+          <Link to="/home" className={buttonClass}>
             {t("home")}
           </Link>
         </div>

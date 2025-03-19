@@ -13,6 +13,28 @@ const resources = {
       pokemonBattle: "Pokémon Battle",
       back: "Back", // Add back button translation
 
+      // Hero Section
+      hero: {
+        title: "Pokémon Battle Game",
+        description:
+          "Welcome to the ultimate Pokémon battle experience! Test your knowledge and battle skills against other trainers to become the very best.",
+        button: "Get Started",
+      },
+
+      // Loading Screen
+      loading: {
+        message: "Loading page takes a little time. Please be patient.",
+        seconds: "seconds",
+        tips: {
+          1: "Did you know? Pikachu was originally going to be a second evolution of another Pokémon!",
+          2: "Fire-type moves are super effective against Grass, Bug, Ice, and Steel types.",
+          3: "Water-type Pokémon are resistant to Fire, Water, Ice, and Steel moves.",
+          4: "Grass-type moves are super effective against Water, Ground, and Rock types.",
+          5: "Legendary Pokémon often have higher base stats than regular Pokémon.",
+          6: "Eevee has the most possible evolutions of any Pokémon!",
+        },
+      },
+
       // HomePage
       welcomeTo: "Welcome to Card Battle",
       startGame: "Start Game",
@@ -99,6 +121,15 @@ const resources = {
       usernameField: "Username",
       enterUsername: "Enter your username",
       passwordsDoNotMatch: "Passwords do not match",
+
+      // 404 Error Page
+      error: {
+        pageNotFound: "Page Not Found",
+        pageNotFoundMessage:
+          "Oops! Looks like this page got lost in the tall grass. Maybe it's a wild MissingNo?",
+        backToHome: "Return to Home",
+        backToLanding: "Go to Landing Page",
+      },
     },
   },
   de: {
@@ -108,7 +139,30 @@ const resources = {
       leaderboard: "Bestenliste",
       signOut: "Abmelden",
       pokemonBattle: "Pokémon Kampf",
-      back: "Zurück", // Add back button translation
+      back: "Zurück",
+
+      // Hero Section
+      hero: {
+        title: "Pokémon Kampfspiel",
+        description:
+          "Willkommen zum ultimativen Pokémon-Kampferlebnis! Teste dein Wissen und deine Kampffähigkeiten gegen andere Trainer, um der Beste zu werden.",
+        button: "Starten",
+      },
+
+      // Loading Screen
+      loading: {
+        message:
+          "Das Laden der Seite dauert einen Moment. Bitte haben Sie Geduld.",
+        seconds: "Sekunden",
+        tips: {
+          1: "Wusstest du? Pikachu sollte ursprünglich eine Weiterentwicklung eines anderen Pokémon sein!",
+          2: "Feuer-Attacken sind sehr effektiv gegen Pflanzen-, Käfer-, Eis- und Stahl-Pokémon.",
+          3: "Wasser-Pokémon sind resistent gegen Feuer-, Wasser-, Eis- und Stahl-Attacken.",
+          4: "Pflanzen-Attacken sind sehr effektiv gegen Wasser-, Boden- und Gesteins-Pokémon.",
+          5: "Legendäre Pokémon haben oft höhere Basiswerte als normale Pokémon.",
+          6: "Evoli hat die meisten möglichen Entwicklungen aller Pokémon!",
+        },
+      },
 
       // HomePage
       welcomeTo: "Willkommen beim Kartenkampf",
@@ -197,6 +251,15 @@ const resources = {
       usernameField: "Benutzername",
       enterUsername: "Benutzernamen eingeben",
       passwordsDoNotMatch: "Passwörter stimmen nicht überein",
+
+      // 404 Error Page
+      error: {
+        pageNotFound: "Seite nicht gefunden",
+        pageNotFoundMessage:
+          "Hoppla! Diese Seite hat sich im hohen Gras verlaufen. Vielleicht ist es ein wildes Missingno?",
+        backToHome: "Zurück zur Startseite",
+        backToLanding: "Zur Landingpage",
+      },
     },
   },
   es: {
@@ -206,7 +269,30 @@ const resources = {
       leaderboard: "Clasificación",
       signOut: "Cerrar Sesión",
       pokemonBattle: "Batalla Pokémon",
-      back: "Atrás", // Add back button translation
+      back: "Atrás",
+
+      // Hero Section
+      hero: {
+        title: "Juego de Batalla Pokémon",
+        description:
+          "¡Bienvenido a la experiencia definitiva de batallas Pokémon! Pon a prueba tus conocimientos y habilidades de batalla contra otros entrenadores para convertirte en el mejor.",
+        button: "Comenzar",
+      },
+
+      // Loading Screen
+      loading: {
+        message:
+          "La carga de la página lleva un poco de tiempo. Por favor, ten paciencia.",
+        seconds: "segundos",
+        tips: {
+          1: "¿Sabías que? ¡Pikachu iba a ser originalmente una segunda evolución de otro Pokémon!",
+          2: "Los movimientos de tipo Fuego son muy efectivos contra los tipos Planta, Bicho, Hielo y Acero.",
+          3: "Los Pokémon de tipo Agua son resistentes a los movimientos de Fuego, Agua, Hielo y Acero.",
+          4: "Los movimientos de tipo Planta son muy efectivos contra los tipos Agua, Tierra y Roca.",
+          5: "Los Pokémon legendarios suelen tener estadísticas base más altas que los Pokémon comunes.",
+          6: "¡Eevee tiene la mayor cantidad de evoluciones posibles de cualquier Pokémon!",
+        },
+      },
 
       // HomePage
       welcomeTo: "Bienvenido a Batalla de Cartas",
@@ -296,6 +382,15 @@ const resources = {
       usernameField: "Nombre de Usuario",
       enterUsername: "Ingresa tu nombre de usuario",
       passwordsDoNotMatch: "Las contraseñas no coinciden",
+
+      // 404 Error Page
+      error: {
+        pageNotFound: "Página no encontrada",
+        pageNotFoundMessage:
+          "¡Ups! Parece que esta página se perdió en la hierba alta. ¿Tal vez sea un MissingNo salvaje?",
+        backToHome: "Volver al inicio",
+        backToLanding: "Ir a la página de inicio",
+      },
     },
   },
   ar: {
@@ -305,7 +400,29 @@ const resources = {
       leaderboard: "المتصدرين",
       signOut: "تسجيل الخروج",
       pokemonBattle: "معركة بوكيمون",
-      back: "عودة", // Add back button translation
+      back: "عودة",
+
+      // Hero Section
+      hero: {
+        title: "لعبة معركة بوكيمون",
+        description:
+          "مرحبًا بك في تجربة معارك بوكيمون النهائية! اختبر معرفتك ومهارات القتال ضد المدربين الآخرين لتصبح الأفضل.",
+        button: "ابدأ الآن",
+      },
+
+      // Loading Screen
+      loading: {
+        message: "تحميل الصفحة يستغرق بعض الوقت. يرجى التحلي بالصبر.",
+        seconds: "ثوان",
+        tips: {
+          1: "هل تعلم؟ كان من المفترض أن يكون بيكاتشو في الأصل تطورًا ثانيًا لبوكيمون آخر!",
+          2: "هجمات النار فعالة للغاية ضد بوكيمون العشب والحشرات والجليد والفولاذ.",
+          3: "بوكيمون الماء مقاوم لهجمات النار والماء والجليد والفولاذ.",
+          4: "هجمات العشب فعالة للغاية ضد بوكيمون الماء والأرض والصخور.",
+          5: "بوكيمون الأسطوري غالبًا ما يكون لديه إحصائيات أساسية أعلى من بوكيمون العادي.",
+          6: "إيفي لديه أكبر عدد ممكن من التطورات من بين جميع البوكيمون!",
+        },
+      },
 
       // HomePage
       welcomeTo: "مرحبًا بك في معركة البطاقات",
@@ -393,6 +510,15 @@ const resources = {
       usernameField: "اسم المستخدم",
       enterUsername: "أدخل اسم المستخدم",
       passwordsDoNotMatch: "كلمات المرور غير متطابقة",
+
+      // 404 Error Page
+      error: {
+        pageNotFound: "الصفحة غير موجودة",
+        pageNotFoundMessage:
+          "عفواً! يبدو أن هذه الصفحة ضاعت في العشب الطويل. ربما هي بوكيمون MissingNo؟",
+        backToHome: "العودة إلى الصفحة الرئيسية",
+        backToLanding: "الذهاب إلى صفحة البداية",
+      },
     },
   },
   fa: {
@@ -402,7 +528,29 @@ const resources = {
       leaderboard: "جدول امتیازات",
       signOut: "خروج",
       pokemonBattle: "نبرد پوکمون",
-      back: "بازگشت", // Add back button translation
+      back: "بازگشت",
+
+      // Hero Section
+      hero: {
+        title: "بازی نبرد پوکمون",
+        description:
+          "به تجربه نهایی نبرد پوکمون خوش آمدید! دانش و مهارت‌های نبرد خود را در برابر مربیان دیگر آزمایش کنید تا بهترین شوید.",
+        button: "شروع کنید",
+      },
+
+      // Loading Screen
+      loading: {
+        message: "بارگذاری صفحه کمی زمان می‌برد. لطفا صبور باشید.",
+        seconds: "ثانیه",
+        tips: {
+          1: "آیا می‌دانستید؟ پیکاچو در اصل قرار بود تکامل دوم پوکمون دیگری باشد!",
+          2: "حرکات نوع آتش در برابر پوکمون‌های گیاهی، حشره، یخی و فولادی بسیار موثر هستند.",
+          3: "پوکمون‌های آبی در برابر حرکات آتش، آب، یخ و فولاد مقاوم هستند.",
+          4: "حرکات نوع گیاهی در برابر پوکمون‌های آبی، زمینی و سنگی بسیار موثر هستند.",
+          5: "پوکمون‌های افسانه‌ای معمولاً آمار پایه بالاتری نسبت به پوکمون‌های معمولی دارند.",
+          6: "ایوی بیشترین تعداد تکامل ممکن را در میان تمام پوکمون‌ها دارد!",
+        },
+      },
 
       // HomePage
       welcomeTo: "به نبرد کارتی خوش آمدید",
@@ -490,6 +638,15 @@ const resources = {
       usernameField: "نام کاربری",
       enterUsername: "نام کاربری خود را وارد کنید",
       passwordsDoNotMatch: "رمزهای عبور مطابقت ندارند",
+
+      // 404 Error Page
+      error: {
+        pageNotFound: "صفحه پیدا نشد",
+        pageNotFoundMessage:
+          "اوه! به نظر می‌رسد این صفحه در علف‌های بلند گم شده است. شاید یک MissingNo وحشی است؟",
+        backToHome: "بازگشت به خانه",
+        backToLanding: "رفتن به صفحه اصلی",
+      },
     },
   },
 };
@@ -506,6 +663,9 @@ i18n
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
+    },
+    react: {
+      useSuspense: false, // This helps ensure translations are available immediately
     },
   });
 
