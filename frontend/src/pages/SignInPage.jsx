@@ -85,7 +85,7 @@ function SignInPage() {
       if (response.data) {
         console.log("✅ User authenticated, updating state...");
         setIsAuthenticated(true);
-        navigate("/");
+        navigate("/home");
       } else {
         console.log("❌ No authentication data received.");
       }
