@@ -42,7 +42,7 @@ function SignUpPage() {
       console.log("Auto login successful, user data:", loginResponse.data);
 
       // Redirect to homepage after successful login
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.error(
         "Error during signup:",
